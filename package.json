@@ -1,0 +1,31 @@
+{
+  "name": "mod-bot",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "ts-node server.ts",
+    "dev": "nodemon server.ts",
+    "install": "npm i && npm run prisma:generate && npm run prisma:migrate",
+    "prisma:migrate": "prisma migrate dev --name dev",
+    "prisma:studio": "prisma studio",
+    "prisma:generate": "prisma generate"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.19.0",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "node-telegram-bot-api": "^0.66.0",
+    "openai": "^4.57.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "@types/node-telegram-bot-api": "^0.64.7",
+    "prisma": "^5.19.0",
+    "typescript": "^5.5.4",
+    "nodemon": "^3.1.0"
+  }
+}
