@@ -62,9 +62,15 @@ bot.on('message', async (msg) => {
   if (!isAdminUser) {
     const messageText = msg.text || '';
     const isBlacklisted = await checkBlacklist(messageText);
-    const isSpam = await checkOpenAI(messageText.slice(0, 20));
 
-    if (isBlacklisted || isSpam) {
+    if (isBlacklisted) {
+      await bot.deleteMessage(msg.chat.id, msg.message_id);
+      return;
+    }
+
+    const isSpam = await checkOpenAI(messageText.trim().split(/\s+/).slice(0, 20).join(' '));
+
+    if (isSpam) {
       await bot.deleteMessage(msg.chat.id, msg.message_id);
       return;
     }
